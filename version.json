@@ -1,8 +1,8 @@
 {
-  "versionCode": 15,
-  "versionName": "1.5.4",
+  "versionCode": 16,
+  "versionName": "1.5.5",
   "apkUrl": "https://yingge-dev.github.io/pp-manager-site/download/PPManager-v1.5.4.apk",
   "pageUrl": "https://yingge-dev.github.io/pp-manager-site/index.html#sponsor",
-  "notes": "新增自动检查更新与手动检查更新；文件列表滑动优化；搜索支持防抖自动搜索；双窗口支持左右各自切换内部存储/根目录。",
+  "notes": "测试：发现新版本时，去下载会打开项目主页。",
   "publishedAt": "2026-11-04"
 }
