@@ -31,6 +31,7 @@
   var index = Math.floor(Math.random() * tracks.length);
   var blocked = false;
   var scrubbing = false;
+  var siteTitle = document.title;
 
   function fmt(seconds) {
     if (!isFinite(seconds) || seconds < 0) return "0:00";
@@ -46,7 +47,7 @@
   function renderTrack() {
     var track = tracks[index];
     titleEl.textContent = track.title;
-    document.title = document.title.replace(/^▶ /, "");
+    document.title = siteTitle;
     if (!audio.paused) document.title = "▶ " + track.title + " · PP管理器";
   }
 
@@ -142,6 +143,7 @@
     if (!audio.ended) {
       playBtn.textContent = "▶";
       setState("已暂停");
+      document.title = siteTitle;
     }
   });
   audio.addEventListener("error", function () {
@@ -176,12 +178,15 @@
     toggleBtn.textContent = "♪";
   });
 
-  // 浏览器通常禁止无交互自动播放：先尝试，被拦截后由页面任意一次点击接管。
-  document.addEventListener("pointerdown", function (event) {
+  function unlockAudio(event) {
     if (!blocked) return;
     if (event.target && event.target.closest && event.target.closest(".pp-music")) return;
     play();
-  }, { once: true });
+  }
+  document.addEventListener("pointerdown", unlockAudio, { passive: true });
+  audio.addEventListener("playing", function () {
+    document.removeEventListener("pointerdown", unlockAudio);
+  });
 
   restoreVolume();
   renderTrack();
