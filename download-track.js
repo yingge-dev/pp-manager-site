@@ -24,7 +24,7 @@
   // 登录用户从官网下载 APK 时记录一条下载历史（每个版本每天只记一次）
   function trackDownload(link) {
     if (!api || !api.getSession || !api.getSession()) return;
-    var version = "1.2.1";
+    var version = "1.3.0";
     var day = new Date().toISOString().slice(0, 10);
     var key = "pp_dl_" + version + "_" + day;
     try {
@@ -36,7 +36,7 @@
       title: "PP管理器",
       version: version,
       platform: "Android",
-      size_bytes: 5636772,
+      size_bytes: 5735248,
       source: "website"
     }).catch(function () {
       try { localStorage.removeItem(key); } catch (e) {}

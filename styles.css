@@ -1337,6 +1337,138 @@ footer {
   }
 }
 
+/* ---------- sponsor ---------- */
+.gold-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border: 1px solid rgba(246, 201, 69, 0.45);
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 224, 138, 0.16), rgba(240, 165, 0, 0.1));
+  color: #f2c94c;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.sponsor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.7fr);
+  gap: 46px;
+  align-items: center;
+}
+
+.sponsor-copy h2 {
+  margin: 9px 0 14px;
+  font-size: clamp(27px, 3.4vw, 38px);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+
+.sponsor-copy p {
+  margin: 0;
+  max-width: 38em;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.85;
+}
+
+.sponsor-points {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.sponsor-points li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.sponsor-points span {
+  flex: none;
+  width: 22px;
+  color: var(--amber);
+  text-align: center;
+}
+
+.sponsor-card {
+  padding: 26px;
+  border: 1px solid rgba(246, 201, 69, 0.32);
+  border-radius: 20px;
+  background:
+    radial-gradient(420px 180px at 100% 0%, rgba(246, 201, 69, 0.16), transparent 68%),
+    radial-gradient(420px 200px at 0% 100%, rgba(110, 139, 255, 0.1), transparent 68%),
+    var(--surface);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+}
+
+.sponsor-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 14px 0 14px;
+}
+
+.sponsor-price strong {
+  font-size: 45px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  background: linear-gradient(120deg, #ffe08a, #f0a500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sponsor-price span {
+  color: var(--faint);
+  font-size: 11.5px;
+}
+
+.sponsor-perks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px 10px;
+  margin: 0 0 20px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  list-style: none;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.sponsor-perks li::before {
+  content: "✓ ";
+  color: var(--amber);
+}
+
+.sponsor-card .btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.sponsor-card .note {
+  margin-top: 12px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .sponsor-grid {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .sponsor-card {
+    max-width: 460px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
