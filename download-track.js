@@ -24,7 +24,7 @@
   // 登录用户从官网下载 APK 时记录一条下载历史（每个版本每天只记一次）
   function trackDownload(link) {
     if (!api || !api.getSession || !api.getSession()) return;
-    var version = "1.4.0";
+    var version = "1.5.0";
     var day = new Date().toISOString().slice(0, 10);
     var key = "pp_dl_" + version + "_" + day;
     try {
