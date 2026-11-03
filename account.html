@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>用户中心 — PP管理器</title>
+  <meta name="description" content="PP管理器用户中心：登录、收藏、下载记录、设备管理、赞助者徽章与卡密兑换。所有功能永久免费。">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#070a12">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("pp-theme");
+        if (!t) t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="account.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/icon-512.png" alt="PP管理器图标" width="32" height="32">
+        <span>PP管理器</span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="主导航">
+        <a href="index.html#features">功能</a>
+        <a href="index.html#screens">截图</a>
+        <a href="index.html#download">下载</a>
+        <a href="index.html#sponsor">赞助</a>
+        <a href="guide.html">手册</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-btn" href="index.html" aria-label="返回首页">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+        </a>
+        <button class="icon-btn theme-btn" id="themeBtn" type="button" aria-label="切换深色 / 浅色">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" id="navToggle" type="button" aria-label="打开菜单" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="account-demo-banner" id="demoBanner" hidden>
+      <strong>演示模式</strong>
+      <span>未连接 Supabase，账号、收藏、卡密只保存在当前浏览器。演示账号：<code>demo@pp.local</code> / <code>demo1234</code>；管理员：<code>admin@pp.local</code> / <code>admin1234</code>。</span>
+    </div>
+
+    <!-- 未登录 -->
+    <section class="auth-view wrap" id="authView">
+      <div class="auth-copy">
+        <span class="kicker">Account</span>
+        <h1>登录 PP管理器</h1>
+        <p class="auth-lead">同步收藏和下载记录，领取赞助者徽章。<br><strong>所有功能永久免费</strong>，账号只是可选的云同步能力。</p>
+        <ul class="auth-points">
+          <li><span>☁</span>收藏、设置、下载记录跨设备同步</li>
+          <li><span>★</span>¥9.9 赞助者获得永久金色徽章</li>
+          <li><span>⌁</span>设备列表与账号安全</li>
+          <li><span>✓</span>不登录也能使用全部功能</li>
+        </ul>
+      </div>
+
+      <div class="auth-card">
+        <div class="auth-tabs" role="tablist">
+          <button class="auth-tab active" type="button" data-auth-tab="login" role="tab" aria-selected="true">登录</button>
+          <button class="auth-tab" type="button" data-auth-tab="register" role="tab" aria-selected="false">注册</button>
+        </div>
+
+        <form class="auth-form" id="loginForm" autocomplete="on">
+          <label class="field">
+            <span>邮箱</span>
+            <input type="email" id="loginEmail" name="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="field">
+            <span>密码</span>
+            <input type="password" id="loginPassword" name="password" autocomplete="current-password" placeholder="至少 6 位" required minlength="6">
+          </label>
+          <button class="btn btn-primary auth-submit" type="submit">登录</button>
+          <p class="auth-alt">还没有账号？<button type="button" class="link-btn" data-auth-tab="register">立即注册</button></p>
+        </form>
+
+        <form class="auth-form" id="registerForm" hidden autocomplete="on">
+          <label class="field">
+            <span>昵称</span>
+            <input type="text" id="registerName" name="name" maxlength="24" placeholder="怎么称呼你">
+          </label>
+          <label class="field">
+            <span>邮箱</span>
+            <input type="email" id="registerEmail" name="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="field">
+            <span>密码</span>
+            <input type="password" id="registerPassword" name="password" autocomplete="new-password" placeholder="至少 6 位" required minlength="6">
+          </label>
+          <button class="btn btn-primary auth-submit" type="submit">注册并登录</button>
+          <p class="auth-alt">已有账号？<button type="button" class="link-btn" data-auth-tab="login">去登录</button></p>
+        </form>
+
+        <p class="auth-error" id="authError" role="alert" hidden></p>
+        <p class="auth-terms">注册即表示同意 <a href="guide.html#account">账号与隐私说明</a>。功能永久免费，赞助为自愿支持。</p>
+      </div>
+    </section>
+
+    <!-- 已登录 -->
+    <section class="dashboard wrap" id="dashboardView" hidden>
+      <aside class="account-side">
+        <div class="side-profile">
+          <div class="avatar-wrap" id="avatarWrap">
+            <div class="avatar" id="avatarInitial">P</div>
+            <span class="avatar-crown" id="avatarCrown" hidden>★</span>
+          </div>
+          <strong id="sideName">用户</strong>
+          <span id="sideEmail" class="side-email"></span>
+          <span class="gold-badge" id="sideBadge" hidden>★ 永久赞助者</span>
+        </div>
+        <nav class="side-nav" aria-label="用户中心">
+          <button class="side-link active" type="button" data-tab="overview">概览</button>
+          <button class="side-link" type="button" data-tab="downloads">下载记录</button>
+          <button class="side-link" type="button" data-tab="favorites">收藏</button>
+          <button class="side-link" type="button" data-tab="devices">设备</button>
+          <button class="side-link" type="button" data-tab="membership">赞助会员</button>
+          <button class="side-link" type="button" data-tab="settings">设置</button>
+        </nav>
+        <a class="side-home" href="index.html">← 返回官网</a>
+      </aside>
+
+      <div class="account-main">
+        <!-- 概览 -->
+        <section class="panel active" id="panel-overview">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Overview</span>
+              <h2>你好，<span id="ovName">用户</span></h2>
+              <p id="ovSub">所有功能永久免费。账号用于同步收藏、下载记录和赞助徽章。</p>
+            </div>
+            <span class="gold-badge" id="ovBadge" hidden>★ 永久赞助者</span>
+          </div>
+
+          <div class="stat-grid">
+            <button class="stat-card" type="button" data-tab="downloads">
+              <span class="stat-label">下载记录</span>
+              <strong id="statDownloads">0</strong>
+              <span class="stat-hint">查看 →</span>
+            </button>
+            <button class="stat-card" type="button" data-tab="favorites">
+              <span class="stat-label">收藏</span>
+              <strong id="statFavorites">0</strong>
+              <span class="stat-hint">查看 →</span>
+            </button>
+            <button class="stat-card" type="button" data-tab="devices">
+              <span class="stat-label">设备</span>
+              <strong id="statDevices">0</strong>
+              <span class="stat-hint">查看 →</span>
+            </button>
+          </div>
+
+          <div class="sponsor-strip" id="sponsorStrip">
+            <div>
+              <strong>支持 PP管理器</strong>
+              <p>¥9.9 永久赞助者，获得金色徽章。所有功能不设限。</p>
+            </div>
+            <button class="btn btn-primary" type="button" data-tab="membership">了解赞助</button>
+          </div>
+
+          <div class="panel-block">
+            <h3>最近下载</h3>
+            <div id="recentDownloads" class="mini-list"></div>
+          </div>
+          <div class="panel-block">
+            <h3>最近收藏</h3>
+            <div id="recentFavorites" class="mini-list"></div>
+          </div>
+        </section>
+
+        <!-- 下载记录 -->
+        <section class="panel" id="panel-downloads">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Downloads</span>
+              <h2>下载记录</h2>
+              <p>记录官网 APK 下载和 App 上报的下载；只保存标题、版本、平台和时间，不保存文件内容。</p>
+            </div>
+            <button class="btn btn-ghost small" type="button" id="clearDownloads">清空记录</button>
+          </div>
+          <div id="downloadList" class="record-list"></div>
+        </section>
+
+        <!-- 收藏 -->
+        <section class="panel" id="panel-favorites">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Favorites</span>
+              <h2>收藏</h2>
+              <p>收藏目录、工具或链接，换设备登录后仍然在。</p>
+            </div>
+          </div>
+
+          <form class="favorite-form" id="favoriteForm">
+            <label class="field compact">
+              <span>标题</span>
+              <input type="text" id="favTitle" maxlength="60" placeholder="例如：Download 目录" required>
+            </label>
+            <label class="field compact">
+              <span>路径 / 链接</span>
+              <input type="text" id="favPath" maxlength="300" placeholder="/sdcard/Download 或 https://..." required>
+            </label>
+            <label class="field compact">
+              <span>类型</span>
+              <select id="favKind">
+                <option value="folder">文件夹</option>
+                <option value="file">文件</option>
+                <option value="tool">工具</option>
+                <option value="link">链接</option>
+              </select>
+            </label>
+            <label class="field compact grow">
+              <span>备注（可选）</span>
+              <input type="text" id="favNote" maxlength="120" placeholder="为什么收藏它">
+            </label>
+            <button class="btn btn-primary" type="submit">添加收藏</button>
+          </form>
+
+          <div id="favoriteList" class="record-list"></div>
+        </section>
+
+        <!-- 设备 -->
+        <section class="panel" id="panel-devices">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Devices</span>
+              <h2>设备</h2>
+              <p>不限制设备数量。这里只记录登录过的设备，方便你确认账号安全。</p>
+            </div>
+          </div>
+          <div id="deviceList" class="record-list"></div>
+        </section>
+
+        <!-- 赞助会员 -->
+        <section class="panel" id="panel-membership">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Sponsor</span>
+              <h2>赞助会员</h2>
+              <p>所有功能永久免费。¥9.9 是一次性赞助，不是功能解锁，也不会续费。</p>
+            </div>
+            <span class="gold-badge" id="memberBadge" hidden>★ 永久赞助者</span>
+          </div>
+
+          <div class="member-card" id="memberCard">
+            <div class="member-card-top">
+              <div>
+                <span class="member-label">当前身份</span>
+                <strong id="memberPlan">普通用户</strong>
+                <span id="memberSince" class="member-since"></span>
+              </div>
+              <div class="member-star" id="memberStar" hidden>★</div>
+            </div>
+            <p id="memberDesc">赞助后头像旁会出现金色永久会员标志，并记录赞助时间。</p>
+            <div class="member-actions">
+              <a class="btn btn-primary" id="buyLink" href="#" target="_blank" rel="noopener">购买卡密 ¥9.9</a>
+              <a class="btn btn-ghost" href="#cdkCard">输入卡密</a>
+            </div>
+          </div>
+
+          <div class="panel-block cdk-card" id="cdkCard">
+            <h3>兑换卡密</h3>
+            <p>在发卡平台购买后会收到一个 <code>PP-</code> 开头的卡密，输入后立即生效，每个卡密只能使用一次。</p>
+            <form class="cdk-form" id="cdkForm">
+              <input type="text" id="cdkInput" placeholder="PP-XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false" required>
+              <button class="btn btn-primary" type="submit">立即兑换</button>
+            </form>
+            <p class="cdk-hint" id="cdkHint"></p>
+          </div>
+
+          <div class="panel-block">
+            <h3>赞助者权益</h3>
+            <ul class="perk-list">
+              <li><span>★</span>头像旁永久金色徽章，用户中心显示赞助日期</li>
+              <li><span>☕</span>支持后续开发、服务器和带宽成本</li>
+              <li><span>✎</span>功能建议优先被看到（不承诺排期）</li>
+              <li><span>∞</span>所有功能永久免费，不因是否赞助而限制</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 设置 -->
+        <section class="panel" id="panel-settings">
+          <div class="panel-head">
+            <div>
+              <span class="kicker">Settings</span>
+              <h2>设置</h2>
+              <p>账号资料和同步开关。邮箱是登录凭证，暂不支持修改。</p>
+            </div>
+          </div>
+
+          <form class="settings-form" id="profileForm">
+            <label class="field">
+              <span>昵称</span>
+              <input type="text" id="settingsName" maxlength="24" placeholder="昵称">
+            </label>
+            <label class="field">
+              <span>邮箱</span>
+              <input type="email" id="settingsEmail" disabled>
+            </label>
+            <label class="switch-row">
+              <span>
+                <strong>云同步</strong>
+                <small>把收藏、设置、下载记录同步到账号</small>
+              </span>
+              <input type="checkbox" id="syncToggle" checked>
+            </label>
+            <div class="settings-actions">
+              <button class="btn btn-primary" type="submit">保存资料</button>
+              <button class="btn btn-ghost" type="button" id="logoutBtn">退出登录</button>
+            </div>
+          </form>
+
+          <div class="danger-zone">
+            <h3>注销账号</h3>
+            <p>注销后账号、收藏、下载记录、设备记录和赞助身份都会被删除，且无法恢复。已购买的卡密不会退款。</p>
+            <button class="btn danger" type="button" id="deleteAccountBtn">注销账号</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icon-512.png" alt="" width="26" height="26">
+        <span>© <span id="year">2026</span> 颖哥 · PP管理器 · Apache-2.0</span>
+      </div>
+      <nav class="footer-links" aria-label="页脚">
+        <a href="index.html">首页</a>
+        <a href="index.html#sponsor">赞助</a>
+        <a href="guide.html">使用手册</a>
+        <a href="index.html#faq">常见问题</a>
+      </nav>
+      <span>账号数据仅用于同步，不用于广告</span>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="pp-api.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>
