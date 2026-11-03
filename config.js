@@ -10,7 +10,7 @@ window.PP_CONFIG = {
 
   // 发卡平台商品页地址，例如 https://your-card-shop.com/buy/pp-lifetime
   // 留空时「购买卡密」会提示即将上线。
-  salesUrl: "",
+  salesUrl: "https://www.kufaka.com/item/gsaegg",
 
   // 管理后台入口（默认 /admin.html），可留空
   adminUrl: "admin.html"
