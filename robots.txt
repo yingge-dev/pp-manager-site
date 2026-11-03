@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://yingge-dev.github.io/pp-manager-site/sitemap.xml

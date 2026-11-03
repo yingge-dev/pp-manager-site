@@ -411,17 +411,17 @@ li code {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 560px;
+  min-height: 620px;
 }
 
 .hero-art::before {
   content: "";
   position: absolute;
-  width: 440px;
-  height: 440px;
+  width: 480px;
+  height: 480px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(110, 139, 255, 0.28), transparent 65%);
-  filter: blur(30px);
+  background: radial-gradient(circle, rgba(110, 139, 255, 0.38), transparent 64%);
+  filter: blur(42px);
 }
 
 .hero-art::after {
@@ -439,9 +439,9 @@ li code {
 .phone {
   position: relative;
   z-index: 1;
-  width: min(302px, 72vw);
-  padding: 9px;
-  border-radius: 40px;
+  width: min(330px, 76vw);
+  padding: 10px;
+  border-radius: 44px;
   background: linear-gradient(160deg, #2a3350, #0b0f18 45%, #1c2438);
   border: 1px solid rgba(148, 163, 190, 0.22);
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -449,7 +449,7 @@ li code {
 
 .phone img {
   width: 100%;
-  border-radius: 32px;
+  border-radius: 35px;
 }
 
 .hero-badge {
