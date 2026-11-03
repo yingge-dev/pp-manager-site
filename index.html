@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>PP管理器 — Android 文件管理与逆向工具箱</title>
-  <meta name="description" content="PP管理器是一个 Android 文件管理器：双窗口、全盘与 ROOT、ZIP/7Z/RAR、APK/DEX/AXML/ARSC 查看、终端、FTP/SMB/WebDAV。v1.5.0 免费下载，本地处理，无广告。">
+  <meta name="description" content="PP管理器是一个 Android 文件管理器：双窗口、全盘与 ROOT、ZIP/7Z/RAR、APK/DEX/AXML/ARSC 查看、终端、FTP/SMB/WebDAV。v1.5.4 免费下载，本地处理，无广告。">
   <meta name="theme-color" content="#070a12">
   <meta name="color-scheme" content="dark light">
   <script>
@@ -23,17 +23,18 @@
   <meta property="og:site_name" content="PP管理器">
   <meta property="og:url" content="https://yingge-dev.github.io/pp-manager-site/">
   <meta property="og:title" content="PP管理器 — Android 文件管理与逆向工具箱">
-  <meta property="og:description" content="双窗口、ROOT、压缩包全格式、APK/DEX/AXML 查看、终端与网络存储。v1.5.0 免费下载。">
+  <meta property="og:description" content="双窗口、ROOT、压缩包全格式、APK/DEX/AXML 查看、终端与网络存储。v1.5.4 免费下载。">
   <meta property="og:image" content="https://yingge-dev.github.io/pp-manager-site/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="PP管理器">
-  <meta name="twitter:description" content="Android 文件管理与逆向工具箱，v1.5.0 免费下载。">
+  <meta name="twitter:description" content="Android 文件管理与逆向工具箱，v1.5.4 免费下载。">
   <meta name="twitter:image" content="https://yingge-dev.github.io/pp-manager-site/assets/og.png">
   <link rel="canonical" href="https://yingge-dev.github.io/pp-manager-site/">
 
   <link rel="icon" href="assets/favicon-64.png" sizes="64x64" type="image/png">
   <link rel="apple-touch-icon" href="assets/icon-180.png">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="music-player.css">
   <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 
   <script type="application/ld+json">
@@ -47,7 +48,7 @@
     "fileSize": "5.4MB",
     "inLanguage": "zh-CN",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CNY" },
-    "downloadUrl": "https://yingge-dev.github.io/pp-manager-site/download/PPManager-v1.5.0.apk"
+    "downloadUrl": "https://yingge-dev.github.io/pp-manager-site/download/PPManager-v1.5.4.apk"
   }
   </script>
 </head>
@@ -87,14 +88,14 @@
     <section class="hero" id="top">
       <div class="wrap hero-grid">
         <div class="hero-copy">
-          <span class="eyebrow"><i></i>v1.5.0 · Apache-2.0 · 本地处理</span>
+          <span class="eyebrow"><i></i>v1.5.4 · Apache-2.0 · 本地处理</span>
           <h1>PP管理器</h1>
           <p class="lead">
             一个用 Kotlin + Jetpack Compose 手写的 Android 文件管理器。<br>
-            <strong>双窗口、全盘与 ROOT、压缩包全格式、APK 逆向查看、终端、网络存储</strong>，装一个就够了。
+            <strong>双窗口、内部存储 / 根目录独立切换、全盘与 ROOT、压缩包、APK 结构查看、终端、网络存储、自动检查更新</strong>，装一个就够了。
           </p>
           <div class="cta">
-            <a class="btn btn-primary" href="download/PPManager-v1.5.0.apk" download>
+            <a class="btn btn-primary" href="download/PPManager-v1.5.4.apk" download>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
               下载 APK <span class="ver">5.5 MB</span>
             </a>
@@ -103,7 +104,8 @@
           <ul class="facts">
             <li>Android 10+</li>
             <li>无广告 / 功能全免费</li>
-            <li>Android 17 真机验证</li>
+            <li>v1.5.4 正式版</li>
+            <li>自动检查更新</li>
           </ul>
         </div>
 
@@ -137,7 +139,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg>
             </span>
             <h3>双窗口 + 多标签</h3>
-            <p>两个目录同屏显示，各自独立标签和历史。复制、移动、对比不用来回跳，跨目录操作一步完成。</p>
+            <p>两个目录同屏显示，各自独立标签和历史。左右窗口都能单独切换「内部存储 / 根目录」，复制、移动、对比一步完成。</p>
             <span class="tag">dual-pane</span>
           </article>
 
@@ -163,7 +165,7 @@
             <span class="feature-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="M13 5l-2 14"/></svg>
             </span>
-            <h3>APK 逆向查看</h3>
+            <h3>APK 结构查看</h3>
             <p>APK 签名 V1/V2/V3、证书指纹、DEX 类与方法统计、AndroidManifest 还原、resources.arsc 字符串、Hex。</p>
             <span class="tag">DEX · AXML · ARSC</span>
           </article>
@@ -189,12 +191,48 @@
       </div>
     </section>
 
+    <section class="section" id="whats-new">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">v1.5.4 / 正式版</span>
+          <h2>这次更新了什么</h2>
+          <p>不是换皮，是把双窗口、更新提醒和日常操作手感一起补齐。</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
+            </span>
+            <h3>自动检查更新</h3>
+            <p>启动时每天检查一次；设置里也能手动检查。有新版本直接提醒，不需要自己盯着官网。</p>
+            <span class="tag">update checker</span>
+          </article>
+          <article class="feature reveal">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg>
+            </span>
+            <h3>双窗口独立切换</h3>
+            <p>默认左内部存储、右根目录；每个窗口顶部都能单独切回内部存储或根目录。没有 ROOT 时两边都停在内部存储。</p>
+            <span class="tag">dual-pane</span>
+          </article>
+          <article class="feature reveal">
+            <span class="feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+            </span>
+            <h3>更快、更跟手</h3>
+            <p>文件列表移除逐项动画，滑动更稳；搜索输入两个字后自动防抖搜索，页面切换也更短更快。</p>
+            <span class="tag">performance</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="screens">
       <div class="wrap">
         <div class="section-head reveal">
           <span class="kicker">Screenshots</span>
           <h2>长这样</h2>
-          <p>深色是默认主题，也可以跟随系统或切到浅色。点开图片可以看大图。</p>
+          <p>支持深色、浅色和跟随系统。双窗口可以左边内部存储、右边根目录，各自独立切换。点开图片看大图。</p>
         </div>
         <div class="shots">
           <figure class="shot reveal">
@@ -206,8 +244,8 @@
             <figcaption>文件列表 · 全盘 + ROOT</figcaption>
           </figure>
           <figure class="shot reveal">
-            <img src="assets/shots/dual.webp" alt="PP管理器双窗口模式" width="720" height="1559" loading="lazy">
-            <figcaption>双窗口 · 跨目录操作</figcaption>
+            <img src="assets/shots/dual.webp" alt="PP管理器双窗口：左内部存储，右根目录" width="720" height="1559" loading="lazy">
+            <figcaption>双窗口 · 每个窗口独立切换存储</figcaption>
           </figure>
           <figure class="shot reveal">
             <img src="assets/shots/tools.webp" alt="PP管理器工具页" width="720" height="1559" loading="lazy">
@@ -247,7 +285,7 @@
       <div class="wrap">
         <div class="section-head reveal">
           <span class="kicker">Download</span>
-          <h2>下载 v1.5.0</h2>
+          <h2>下载 v1.5.4</h2>
           <p>免费使用，Apache-2.0 许可。直接下载 APK，不需要安装器或应用商店。</p>
         </div>
 
@@ -255,7 +293,7 @@
           <div class="download-card reveal">
             <h2>PP管理器</h2>
             <div class="version-row">
-              <span class="badge">v1.5.0</span>
+              <span class="badge">v1.5.4</span>
               <span class="date">2026-11-03 · 稳定版</span>
             </div>
             <ul class="spec">
@@ -263,13 +301,13 @@
               <li>安装包大小<strong>5.5 MB</strong></li>
               <li>架构<strong>arm64-v8a / armeabi-v7a</strong></li>
             </ul>
-            <a class="btn btn-primary" href="download/PPManager-v1.5.0.apk" download>
+            <a class="btn btn-primary" href="download/PPManager-v1.5.4.apk" download>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 21h16"/></svg>
               下载 APK
             </a>
             <div class="sha">
               <span>SHA-256</span>
-              <code id="shaText">df3287966c8fd3a9a01cc105ad7304e9d45e737815a282a32f82531264563334</code>
+              <code id="shaText">7469bcd4c98ce28e4d5bd2996e464e479c3a51489f4def990b9ce22c0a9bbcff</code>
               <button class="copy-btn" type="button" data-copy="#shaText">复制</button>
             </div>
             <p class="note">
@@ -281,7 +319,7 @@
           <aside class="install-card reveal">
             <h3>三步开始</h3>
             <ol class="steps">
-              <li>下载 <code>PPManager-v1.5.0.apk</code> 并安装。</li>
+              <li>下载 <code>PPManager-v1.5.4.apk</code> 并安装。</li>
               <li>首次启动按提示授予「所有文件访问权限」。</li>
               <li>需要系统目录时，再授予 ROOT；不需要可以一直用普通模式。</li>
             </ol>
@@ -336,6 +374,16 @@
 
         <ol class="timeline">
           <li class="release latest reveal">
+            <h3><span class="v">v1.5.4</span> <time datetime="2026-11-04">2026-11-04</time></h3>
+            <ul>
+              <li>新增自动检查更新：启动时每天检查一次；设置 → 关于 → 检查更新可手动检查。</li>
+              <li>发现新版本后，「去下载」打开项目主页的 <code>index.html#sponsor</code>。</li>
+              <li>双窗口默认左内部存储、右根目录；每个窗口顶部可独立切换「内部存储 / 根目录」。</li>
+              <li>文件列表移除逐项动画，滑动更稳；搜索支持 280ms 防抖自动搜索。</li>
+              <li>页面切换改为 120ms 短淡入淡出，点击后更快到位。</li>
+            </ul>
+          </li>
+          <li class="release reveal">
             <h3><span class="v">v1.5.0</span> <time datetime="2026-11-04">2026-11-04</time></h3>
             <ul>
               <li>新卡密格式 <code>PP2</code>：卡密内嵌发行日期，并参与 ECDSA 签名。</li>
@@ -478,6 +526,28 @@
     </section>
   </main>
 
+  <div class="pp-music" id="ppMusic" aria-label="背景音乐">
+    <button class="pp-music__toggle" id="pmToggle" type="button" aria-label="展开或收起音乐">×</button>
+    <div class="pp-music__panel">
+      <div class="pp-music__head">
+        <span class="pp-music__dot" aria-hidden="true"></span>
+        <span class="pp-music__state" id="pmState">背景音乐</span>
+        <button class="pp-music__close" id="pmClose" type="button" aria-label="收起音乐">×</button>
+      </div>
+      <div class="pp-music__title" id="pmTitle">正在载入…</div>
+      <div class="pp-music__sub">随机播放 · 可切换上一首 / 下一首</div>
+      <input class="pp-music__progress" id="pmProgress" type="range" min="0" max="1000" value="0" aria-label="播放进度">
+      <div class="pp-music__time"><span id="pmCurrent">0:00</span><span id="pmDuration">0:00</span></div>
+      <div class="pp-music__controls">
+        <button id="pmPrev" type="button" aria-label="上一首">⏮</button>
+        <button id="pmPlay" type="button" aria-label="播放或暂停">▶</button>
+        <button id="pmNext" type="button" aria-label="下一首">⏭</button>
+        <input id="pmVolume" type="range" min="0" max="100" value="70" aria-label="音量">
+      </div>
+      <div class="pp-music__note">音乐仅供欣赏，版权归原作者 · 浏览器限制时点任意处开始</div>
+    </div>
+  </div>
+
   <footer>
     <div class="wrap footer-inner">
       <div class="footer-brand">
@@ -505,5 +575,6 @@
   <script src="pp-api.js"></script>
   <script src="download-track.js"></script>
   <script src="app.js"></script>
+  <script src="music-player.js"></script>
 </body>
 </html>
